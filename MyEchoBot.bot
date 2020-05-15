@@ -1,0 +1,18 @@
+{
+    "name": "MyEchoBot",
+    "description": "",
+    "services": [
+        {
+            "type": "endpoint",
+            "appId": "",
+            "appPassword": "",
+            "endpoint": "http://localhost:3978/api/messages",
+            "id": "cab1e100-9449-11ea-a0bb-590afd75903c",
+            "name": "development"
+        }
+    ],
+    "padlock": "",
+    "version": "2.0",
+    "overrides": null,
+    "path": "/home/maryanne/MyEchoBot.bot"
+}
