@@ -15,6 +15,6 @@ namespace MyEchoBot.Models
          public string Order { set; get; }
         public string Location{ set; get; }
         // public DateTime CallbackTime { set; get; }
-        public string Instruction { get; internal set; }
+        public string Instruction { get; set; }
     }
 }

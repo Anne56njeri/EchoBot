@@ -105,36 +105,7 @@ namespace MyEchoBot.Dialogs
         }
 
         // our validators...
-        private Task<bool> CallbackTimeValidatorAsync(PromptValidatorContext<IList<DateTimeResolution>> promptContext, CancellationToken cancellationToken)
-        {
-            var valid = false;
-
-            if (promptContext.Recognized.Succeeded)
-            {
-                var resolution = promptContext.Recognized.Value.First();
-                DateTime selectedDate = Convert.ToDateTime(resolution.Value);
-                TimeSpan start = new TimeSpan(9, 0, 0); // 10 oclock
-                TimeSpan end = new TimeSpan(17, 0, 0);
-                if((selectedDate.TimeOfDay >= start) && (selectedDate.TimeOfDay <= end))
-                {
-                    valid = true;
-                }
-            }
-
-            return Task.FromResult(valid);
-        }
-
-
-        private Task<bool> PhoneNumberValidatorAsync(PromptValidatorContext<string> promptContext, CancellationToken cancellationToken)
-        {
-            var valid = false;
-
-            if (promptContext.Recognized.Succeeded)
-            {
-                valid = Regex.Match(promptContext.Recognized.Value, @"^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$").Success;
-            }
-            return Task.FromResult(valid);
-        }
+        
         
     }
 }
