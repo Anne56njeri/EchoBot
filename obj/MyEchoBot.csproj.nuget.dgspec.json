@@ -45,6 +45,14 @@
               "version": "[2.2.0, )",
               "autoReferenced": true
             },
+            "Microsoft.Bot.Builder.Azure": {
+              "target": "Package",
+              "version": "[4.9.1, )"
+            },
+            "Microsoft.Bot.Builder.Dialogs": {
+              "target": "Package",
+              "version": "[4.9.1, )"
+            },
             "Microsoft.Bot.Builder.Integration.AspNet.Core": {
               "target": "Package",
               "version": "[4.7.0, )"

@@ -5,6 +5,7 @@
 
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Logging; 
 
 namespace MyEchoBot
 {
@@ -16,7 +17,11 @@ namespace MyEchoBot
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+            WebHost.CreateDefaultBuilder(args).ConfigureLogging((logging) =>
+            {
+                logging.AddDebug();
+                logging.AddConsole();
+            })
+            .UseStartup<Startup>();
     }
 }

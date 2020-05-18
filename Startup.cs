@@ -14,6 +14,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MyEchoBot.Services;
 using MyEchoBot.Bots;
+using MyEchoBot.Dialogs;
 
 namespace MyEchoBot
 {
@@ -44,16 +45,24 @@ namespace MyEchoBot
 
             // Configure state before we intialize the greeting bot
             ConfigureState(services);
-
+            ConfigureDialogs(services);
             // Create the bot as a transient. In this case the ASP Controller is expecting an IBot.
             // How we connect the bot to the system...
-            services.AddTransient<IBot, GreetinBot>();
-        }
 
+            // create  the bot as a transient in the case the ASP controller is expecting IBOT...
+            services.AddTransient<IBot, DialogBot<MainDialog>>();
+        }
+         public void ConfigureDialogs(IServiceCollection services)
+        {
+            services.AddSingleton<MainDialog>();
+
+        }
         public void ConfigureState(IServiceCollection services){
             // create the storage we'll be using for user and conversation state (Memory is great for testing purposes)
-            services.AddSingleton<IStorage,MemoryStorage>();
+             services.AddSingleton<IStorage,MemoryStorage>();
             // create singletons for the user state
+            
+            // services.AddSingleton<IStorage>(new AzureBlobStorage(storageAccount,storageContainer));
             services.AddSingleton<UserState>();
             // create the conversation state
             services.AddSingleton<ConversationState>();
